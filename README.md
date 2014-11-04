@@ -5,6 +5,12 @@ This bundle provide a simple Extract-Transform-Load Workflow
 
 The Extractor, Transformer and Loader classes need to implements the php-etl library: [docteurklein/php-etl](https://github.com/docteurklein/php-etl)
 
+Install
+-------
+``` shell
+composer require "bookeen/etl-workflow:1.0.0"
+```
+
 In your Smfony CLI
 ------------------
 ```php
