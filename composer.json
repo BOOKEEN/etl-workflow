@@ -1,0 +1,27 @@
+{
+    "name" : "bookeen/etl-workflow",
+    "description" : "Extract-Transform-Load workflow library",
+    "type" : "library",
+    "authors" : [{
+        "name" : "frederic oudry",
+        "email" : "frederico@bookeen.com"
+    }],
+    "keywords" : [
+        "Extract-Transform-Load ETL workflow symfony"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php": ">=5.3.5",
+        "knplabs/etl": "0.1.*@dev",
+        "symfony/console": "~2.5.0",
+        "psr/log": "~1.0"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Bookeen\\EtlBundle" : ""
+        }
+    },
+    "target-dir" : "Bookeen/ETLWorkflow"
+}
