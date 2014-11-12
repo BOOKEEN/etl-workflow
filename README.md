@@ -1,20 +1,18 @@
 bookeen-etl-workflow
 ================
 
-This bundle provide a simple Extract-Transform-Load Workflow
-
-The Extractor, Transformer and Loader classes need to implements the php-etl library: [docteurklein/php-etl](https://github.com/docteurklein/php-etl)
+This bundle provide a simple Extract-Transform-Load Workflow with ETL interfaces.
 
 Install
 -------
 ``` shell
-composer require "bookeen/etl-workflow:1.0.0"
+composer require "bookeen/etl-workflow:1.1.0"
 ```
 
 In your Smfony CLI
 ------------------
 ```php
-$workflow = $this->getContainer()->get('workflow');
+$workflow = new Workflow();
 
 $workflow->setExtractor(new YourExtractor());
 $workflow->setTransformer(new YourTransformer());
@@ -25,7 +23,7 @@ $workflow->process();
 
 You can add a ProgressBar for CLI
 ```php
-$workflow = $this->getContainer()->get('workflow');
+$workflow = new Workflow();
 
 // Dispatch ProgressBar helper for CLI
 $dispatcher = $this->getContainer()->get('event_dispatcher');

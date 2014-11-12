@@ -2,12 +2,12 @@
 
 namespace Bookeen\ETLWorkflow\Workflow;
 
-use Knp\ETL\ContextInterface;
-use Knp\ETL\ExtractorInterface;
-use Knp\ETL\LoaderInterface;
-use Knp\ETL\TransformerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Bookeen\ETLWorkflow\Context\ContextInterface;
+use Bookeen\ETLWorkflow\Extractor\ExtractorInterface;
+use Bookeen\ETLWorkflow\Loader\LoaderInterface;
+use Bookeen\ETLWorkflow\Transformer\TransformerInterface;
 use Bookeen\EtlWorkflow\Event\WorkflowEvent;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class Workflow
 {

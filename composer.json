@@ -13,8 +13,7 @@
         "MIT"
     ],
     "require" : {
-        "php": ">=5.3.5",
-        "knplabs/etl": "0.1.*@dev",
+        "php": ">=5.3.3",
         "symfony/console": "~2.5.0",
         "psr/log": "~1.0"
     },
