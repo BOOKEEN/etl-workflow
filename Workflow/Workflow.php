@@ -3,7 +3,7 @@
 namespace Bookeen\ETLWorkflow\Workflow;
 
 use Bookeen\ETLWorkflow\Context\ContextInterface;
-use Bookeen\ETLWorkflow\Extractor\ExtractorInterface;
+use Bookeen\ETLWorkflow\Extractor\ExtractorAbstract;
 use Bookeen\ETLWorkflow\Loader\LoaderInterface;
 use Bookeen\ETLWorkflow\Transformer\TransformerInterface;
 use Bookeen\EtlWorkflow\Event\WorkflowEvent;
@@ -39,7 +39,7 @@ class Workflow
     }
 
     /**
-     * @return ExtractorInterface
+     * @return ExtractorAbstract
      */
     public function getExtractor()
     {
@@ -47,9 +47,9 @@ class Workflow
     }
 
     /**
-     * @param ExtractorInterface $extractor
+     * @param ExtractorAbstract $extractor
      */
-    public function setExtractor(ExtractorInterface $extractor)
+    public function setExtractor(ExtractorAbstract $extractor)
     {
         $this->extractor = $extractor;
     }
@@ -102,9 +102,10 @@ class Workflow
         }
 
         $this->loader->flush($this->context);
+        $this->extractor->purge($this->context);
 
         if ($this->dispatcher !== null) {
             $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_FINISH);
         }
     }
-} 
+}
