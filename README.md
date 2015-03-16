@@ -6,7 +6,7 @@ This bundle provide a simple Extract-Transform-Load Workflow with ETL interfaces
 Install
 -------
 ``` shell
-composer require "bookeen/etl-workflow:1.2.0"
+composer require "bookeen/etl-workflow:1.2.1"
 ```
 
 In your Smfony CLI
