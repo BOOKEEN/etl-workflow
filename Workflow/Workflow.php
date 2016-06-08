@@ -6,7 +6,7 @@ use Bookeen\ETLWorkflow\Context\ContextInterface;
 use Bookeen\ETLWorkflow\Extractor\ExtractorAbstract;
 use Bookeen\ETLWorkflow\Loader\LoaderInterface;
 use Bookeen\ETLWorkflow\Transformer\TransformerInterface;
-use Bookeen\EtlWorkflow\Event\WorkflowEvent;
+use Bookeen\ETLWorkflow\Event\WorkflowEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class Workflow
