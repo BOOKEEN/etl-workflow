@@ -3,20 +3,33 @@
 namespace Bookeen\ETLWorkflow\Workflow;
 
 use Bookeen\ETLWorkflow\Context\ContextInterface;
+use Bookeen\ETLWorkflow\Event\WorkflowEvent;
 use Bookeen\ETLWorkflow\Extractor\ExtractorAbstract;
 use Bookeen\ETLWorkflow\Loader\LoaderInterface;
 use Bookeen\ETLWorkflow\Transformer\TransformerInterface;
-use Bookeen\ETLWorkflow\Event\WorkflowEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
 
 class Workflow
 {
+    /** @var ExtractorAbstract */
     private $extractor;
+
+    /** @var TransformerInterface */
     private $transformer;
+
+    /** @var LoaderInterface */
     private $loader;
+
+    /** @var  ContextInterface */
     private $context;
+
+    /** @var EventDispatcherInterface */
     private $dispatcher;
 
+    /**
+     * @param EventDispatcherInterface $dispatcher
+     */
     public function setDispatcher(EventDispatcherInterface $dispatcher)
     {
         $this->dispatcher = $dispatcher;
@@ -86,10 +99,13 @@ class Workflow
         $this->transformer = $transformer;
     }
 
+    /**
+     *
+     */
     public function process()
     {
         if ($this->dispatcher !== null) {
-            $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_START);
+            $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_START, new GenericEvent($this->context));
         }
 
         while (null !== $extracted = $this->extractor->extract($this->context)) {
@@ -97,7 +113,7 @@ class Workflow
             $this->loader->load($transformed, $this->context);
 
             if ($this->dispatcher !== null) {
-                $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_ADVANCE);
+                $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_ADVANCE, new GenericEvent($this->context));
             }
         }
 
@@ -105,7 +121,7 @@ class Workflow
         $this->extractor->purge($this->context);
 
         if ($this->dispatcher !== null) {
-            $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_FINISH);
+            $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_FINISH, new GenericEvent($this->context));
         }
     }
 }
