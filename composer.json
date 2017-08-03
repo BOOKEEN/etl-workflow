@@ -18,12 +18,12 @@
         "psr/log": "~1.0"
     },
     "autoload": {
-        "psr-4": {
+        "psr-0": {
             "Bookeen\\ETLWorkflow": "src/"
         }
     },
     "autoload": {
-        "psr-4": { "Bookeen\\ETLWorkflow\\": "" }
+        "psr-0": { "Bookeen\\ETLWorkflow\\": "" }
     },
     "target-dir": "Bookeen/ETLWorkflow"
 }
