@@ -9,7 +9,7 @@ Install
 composer require "bookeen/etl-workflow:1.2.1"
 ```
 
-In your Smfony CLI
+In your Symfony CLI
 ------------------
 ```php
 $workflow = new Workflow();
