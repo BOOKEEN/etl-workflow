@@ -13,8 +13,8 @@
         "MIT"
     ],
     "require" : {
-        "php": ">=5.3.3",
-        "symfony/console": "~2.5",
+        "php": ">=5.5.9",
+        "symfony/console": "~3.0",
         "psr/log": "~1.0"
     },
     "autoload": {
